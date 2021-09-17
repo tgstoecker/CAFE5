@@ -2,6 +2,7 @@
 #include <sstream>
 #include <algorithm>
 #include <fstream>
+#include <iomanip>
 
 #include "easylogging++.h"
 
@@ -223,7 +224,7 @@ void reconstruction::print_increases_decreases_by_family(std::ostream& ost, cons
     ost << "#FamilyID\tpvalue\tSignificant at " << test_pvalue << "\n";
 
     for (size_t i = 0; i < gene_families.size(); ++i) {
-        ost << gene_families[i].id() << '\t' << pvalues[i] << '\t';
+        ost << gene_families[i].id() << '\t' << std::setprecision(6) << pvalues[i] << '\t';
         ost << (pvalues[i] < test_pvalue ? 'y' : 'n');
         ost << endl;
     }
