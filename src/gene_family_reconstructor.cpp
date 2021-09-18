@@ -222,11 +222,9 @@ void reconstruction::print_increases_decreases_by_family(std::ostream& ost, cons
     }
 
     ost << "#FamilyID\tpvalue\tSignificant at " << test_pvalue << "\n";
-
-    std::streamsize ppp = pvalues.precision();
     
     for (size_t i = 0; i < gene_families.size(); ++i) {
-        ost << gene_families[i].id() << '\t' << pvalues[i].precision(6) << '\t';
+        ost << gene_families[i].id() << '\t' << pvalues[i] << '\t';
         ost << (pvalues[i] < test_pvalue ? 'y' : 'n');
         ost << endl;
     }
